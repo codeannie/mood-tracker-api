@@ -8,7 +8,7 @@ const createNewUser = (req, res) => {
       password: req.body.password,
     })
     .then(user => {
-      res.status(201).json(user.toClient())
+      res.status(201).json(user.toClient());
     })
     .catch(err => {
       console.error(err);
