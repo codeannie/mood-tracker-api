@@ -1,4 +1,4 @@
-import User from './user.model';
+const User = require('./user.model');
 
 // CREATE NEW USER
 const createNewUser = (req, res) => {
@@ -16,4 +16,4 @@ const createNewUser = (req, res) => {
     });
 };
 
-export { createNewUser };
+module.exports = { createNewUser };

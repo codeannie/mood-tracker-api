@@ -1,13 +1,13 @@
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import express from 'express';
-import jwtStrategy from './auth/auth.strategies';
-import mongoose from 'mongoose';
-import morgan from 'morgan';
-import passport from 'passport';
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const express = require('express');
+const jwtStrategy = require('./auth/auth.strategies');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const passport = require('passport');
 
-import { DATABASE_URL, PORT, CLIENT_ORIGIN } from './config.js';
-import authRouter from './auth/auth.routes';
+const { DATABASE_URL, PORT, CLIENT_ORIGIN } = require('./config.js');
+const authRouter = require('./auth/auth.routes');
 
 const app = express();
 
@@ -78,4 +78,4 @@ if (require.main === module) {
   runServer().catch(err => console.error(err));
 };
 
-export { runServer, app, closeServer};
+module.exports = { runServer, app, closeServer };
