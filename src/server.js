@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
-const jwtStrategy = require('./auth/auth.strategies');
+const { jwtStrat } = require('./auth/auth.strategies');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
@@ -31,7 +31,7 @@ app.use(
 app.use(morgan('common'));
 app.use(bodyParser.json());
 app.use(passport.initialize());
-passport.use(jwtStrategy);
+passport.use(jwtStrat);
 
 mongoose.Promise = global.Promise;
 
