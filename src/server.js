@@ -36,7 +36,7 @@ passport.use(jwtStrat);
 mongoose.Promise = global.Promise;
 
 // ROUTES
-app.use('./api/auth', authRouter);
+app.use('/api/auth', authRouter);
 
 let server; 
 
