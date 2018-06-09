@@ -8,7 +8,7 @@ const moodSchema = mongoose.Schema({
   updatedDate: { type: Date },
 });
 
-moodSchema.methods.toClient = function() {
+moodSchema.methods.toClient = function () {
   return {
     id: this._id,
     userId: this.userId,
@@ -21,4 +21,4 @@ moodSchema.methods.toClient = function() {
 
 const Mood = mongoose.model('mood', moodSchema);
 
-module.exports = { Mood }
+module.exports = { Mood };
