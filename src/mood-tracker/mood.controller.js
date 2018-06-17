@@ -18,7 +18,7 @@ const findExistingMoods = (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(500).json({
-        message: 'cannot get moods - internal server error'
+        message: 'cannot get moods - internal server error',
       });
     });
 };
@@ -29,7 +29,7 @@ const addNewMood = (req, res) => {
     return res.status(401).json('not authorized');
   }
 
-  const requiredFields = ['moodId', 'createdDate'];
+  const requiredFields = ['moodId'];
   for (let i = 0; i < requiredFields.length; i++) {
     const field = requiredFields[i];
 
