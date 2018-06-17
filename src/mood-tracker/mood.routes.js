@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const { getExistingMoods, addNewMood } = require('./mood.controller');
+const { findExistingMoods, addNewMood } = require('./mood.controller');
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -10,13 +10,13 @@ router.use(bodyParser.json());
 router.get(
   '/:userId', 
   passport.authenticate('jwt', { session: false }),
-  getExistingMoods
+  findExistingMoods
 );
 
 // ADD MOOD
 router.post(
   '/:userId',
-  passport.authenticate('jwt', { sesssion: false }),
+  passport.authenticate('jwt', { session: false }),
   addNewMood
 );
 
