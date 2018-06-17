@@ -8,6 +8,7 @@ const passport = require('passport');
 
 const { DATABASE_URL, PORT, CLIENT_ORIGIN } = require('./config.js');
 const authRouter = require('./auth/auth.routes');
+const moodRouter = require('./mood-tracker/mood.routes');
 
 const app = express();
 
@@ -37,6 +38,7 @@ mongoose.Promise = global.Promise;
 
 // ROUTES
 app.use('/api/auth', authRouter);
+app.use('/api/moods', moodRouter);
 
 let server; 
 

@@ -4,7 +4,7 @@ const moodSchema = mongoose.Schema({
   userId: { type: String },
   moodId: { type: Number, required: true },
   notes: { type: String, trim: true },
-  createdDate: { type: Date, required: true},
+  createdDate: { type: Date, required: true },
   updatedDate: { type: Date },
 });
 

@@ -1,5 +1,5 @@
 const Mood = require('./mood.model');
-const moodTypes = require('../enums/mood.constants');
+// const moodTypes = require('../enums/mood.constants');
 
 // GET ALL MOODS
 const findExistingMoods = (req, res) => {
@@ -23,3 +23,39 @@ const findExistingMoods = (req, res) => {
     });
 };
 
+// ADD NEW MOOD 
+const addNewMood = (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.status(401).json('not authorized');
+  }
+
+  const requiredFields = ['moodId', 'createdDate'];
+  for (let i = 0; i < requiredFields.length; i++) {
+    const field = requiredFields[i];
+
+    if (!(field in req.body)) {
+      const message = `Message \`${field}\` in request body`;
+      console.error(message);
+      return res.status(400).send(message);
+    } 
+  }
+
+  Mood.create({
+    userId: req.params.userId,
+    moodId: req.body.moodId,
+    notes: req.body.notes,
+    createdDate: new Date(),
+    updatedDate: new Date(), // ?
+  })
+    .then(mood => {
+      res.status(201).json(mood.toClient());
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        message: 'add mood - internal server error',
+      });
+    });
+};
+
+module.exports = { findExistingMoods, addNewMood };
