@@ -25,7 +25,7 @@ const corsOptions = {
 }
 
 app.use(
-    cors(corsOptions)
+  cors(corsOptions)
 );
 
 // use these middleware for the app
@@ -40,12 +40,12 @@ mongoose.Promise = global.Promise;
 app.use('/api/auth', authRouter);
 app.use('/api/moods', moodRouter);
 
-let server; 
+let server;
 
 // connect to mongo database & start the express server
 function runServer(databaseUrl = DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(databaseUrl, {useMongoClient: true}, err => {
+    mongoose.connect(databaseUrl, err => {
       if (err) {
         return reject(err);
       }
@@ -53,27 +53,27 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
         console.log(`App is listening on port ${port}`);
         resolve();
       })
-      .on('error', err => {
-        mongoose.disconnect();
-        reject(err);
-      });
+        .on('error', err => {
+          mongoose.disconnect();
+          reject(err);
+        });
     });
   });
 }
 
 // close the express server
 function closeServer() {
-    return mongoose.disconnect().then(() => {
-      return new Promise((resolve, reject) => {
-        console.log('Closing server');
-        server.close(err => {
-          if (err) {
-            return reject(err);
-          }
-          resolve();
-        });
+  return mongoose.disconnect().then(() => {
+    return new Promise((resolve, reject) => {
+      console.log('Closing server');
+      server.close(err => {
+        if (err) {
+          return reject(err);
+        }
+        resolve();
       });
     });
+  });
 }
 
 if (require.main === module) {
