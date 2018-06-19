@@ -11,7 +11,7 @@ const getAllUsers = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ message: "internal server error"});
+      res.status(500).json({ message: 'internal server error' });
     });
 };
 
@@ -31,4 +31,4 @@ const createNewUser = (req, res) => {
     });
 };
 
-module.exports = { createNewUser };
+module.exports = { createNewUser, getAllUsers };

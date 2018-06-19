@@ -12,4 +12,4 @@ router.post('/', createNewUser);
 // GET ALL USERS
 router.get('/', getAllUsers);
 
-module.exports = router; 
+module.exports = router;
