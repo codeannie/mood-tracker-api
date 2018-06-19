@@ -1,4 +1,4 @@
-const Mood = require('./mood.model');
+const { Mood } = require('./mood.model');
 // const moodTypes = require('../enums/mood.constants');
 
 // GET ALL MOODS
